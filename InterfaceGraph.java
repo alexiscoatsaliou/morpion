@@ -25,6 +25,7 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 	JButton bouton6;
 	JButton bouton7;
 	JButton bouton8;
+	JLabel AfficheScore;
 	
 	public InterfaceGraph () {
 		setTitle("Morpion");
@@ -37,7 +38,7 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		boxH.add(Box.createHorizontalStrut(45));
 		boxH.add(new JLabel("Score IA"));
 		boxH.add(Box.createHorizontalStrut(30));
-		boxH.add(new JLabel("Score Joueur"));
+		boxH.add(AfficheScore);
 		this.add(boxH, BorderLayout.NORTH);
 		
 		Container boxV = Box.createVerticalBox();		// Création du menu vertical
@@ -77,18 +78,9 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		bouton8 = new JButton();		
 		panelTouches.add(bouton8);
 		bouton8.addActionListener(this);
-		
-		
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
 		this.add(panelTouches, BorderLayout.CENTER);
+		
+		AfficheScore = new JLabel("Score joueur" + GetScore());
 		
 	}
 	
@@ -150,8 +142,29 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		}
 		
 	}
+	
+	
+//	public double gagnant() {
+//		if (bouton0 == bouton1 && bouton1 == bouton2) {
+//		}
+//	}
+	
+	
+	
+	public double GetScore() {
+		double score = 0;
+		if (EstVainqueur() == true) {
+			score ++;
+		}
+		return score;
+	}
+	
 
-
+	public boolean EstVainqueur() {
+		return false;
+	
+	}
+	
 
 
 public static void main(String[] args) {
@@ -160,4 +173,3 @@ public static void main(String[] args) {
 	}
 
 }
-
