@@ -3,6 +3,8 @@ package morpion;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -10,8 +12,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
-public class InterfaceGraph extends JFrame{
+public class InterfaceGraph extends JFrame implements ActionListener {
+	
+	boolean tour1 = true;
+	
+	JButton bouton0;
+	JButton bouton1;
+	JButton bouton2;
+	JButton bouton3;
+	JButton bouton4;
+	JButton bouton5;
+	JButton bouton6;
+	JButton bouton7;
+	JButton bouton8;
 	
 	public InterfaceGraph () {
 		setTitle("Morpion");
@@ -37,54 +50,114 @@ public class InterfaceGraph extends JFrame{
 		JPanel panelTouches = new JPanel();				// Création de la grille
 		panelTouches.setLayout(new GridLayout(3,3));
 		
-		JPanel panel = new JPanel();
-		JButton bouton0 = new JButton("clik");
+		bouton0 = new JButton();
 		panelTouches.add(bouton0);
-		
-		JButton bouton1 = new JButton("clik");
+		bouton0.addActionListener(this);
+		bouton1 = new JButton();
 		panelTouches.add(bouton1);
-		
-		JButton bouton2 = new JButton("clik");
-		panelTouches.add(bouton2);
-		
-		JButton bouton3 = new JButton("clik");
+		bouton1.addActionListener(this);
+		bouton2 = new JButton();
+		panelTouches.add(bouton2);		
+		bouton2.addActionListener(this);
+		bouton3 = new JButton();
 		panelTouches.add(bouton3);
-		
-		JButton bouton4 = new JButton("clik");
+		bouton3.addActionListener(this);
+		bouton4 = new JButton();
 		panelTouches.add(bouton4);
-		
-		JButton bouton5 = new JButton("clik");
+		bouton4.addActionListener(this);
+		bouton5 = new JButton();
 		panelTouches.add(bouton5);
-		
-		JButton bouton6 = new JButton("clik");
+		bouton5.addActionListener(this);
+		bouton6 = new JButton();
 		panelTouches.add(bouton6);
-		
-		JButton bouton7 = new JButton("clik");
+		bouton6.addActionListener(this);
+		bouton7 = new JButton();
 		panelTouches.add(bouton7);
-		
-		JButton bouton8 = new JButton("clik");
+		bouton7.addActionListener(this);
+		bouton8 = new JButton();		
 		panelTouches.add(bouton8);
+		bouton8.addActionListener(this);
 		
 		
-//		panelTouches.add(new JButton(""));
-//		panelTouches.add(new JButton(""));
-//		panelTouches.add(new JButton(""));
-//		panelTouches.add(new JButton(""));
-//		panelTouches.add(new JButton(""));
-//		panelTouches.add(new JButton(""));
-//		panelTouches.add(new JButton(""));
-//		panelTouches.add(new JButton(""));
-//		panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
 		this.add(panelTouches, BorderLayout.CENTER);
 		
 	}
 	
-	
-	
-	
-	public static void main(String[] args) {
-		InterfaceGraph f = new InterfaceGraph();
-		f.setVisible(true);
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == bouton0) {
+				if (tour1 == true) {
+					bouton0.setText("X");
+				} else {
+					bouton0.setText("O");
+				}
+		}	else if (e.getSource() == bouton1) {
+				if (tour1 == true) {
+					bouton1.setText("X");
+				} else {
+					bouton1.setText("O");
+				}
+		}	else if (e.getSource() == bouton2) {
+				if (tour1 == true) {
+					bouton2.setText("X");
+				} else {
+					bouton2.setText("O");
+				}
+		}	else if (e.getSource() == bouton3) {
+				if (tour1 == true) {
+					bouton3.setText("X");
+				} else {
+					bouton3.setText("O");
+				}
+		}	else if (e.getSource() == bouton4) {
+				if (tour1 == true) {
+					bouton4.setText("X");
+				} else {
+					bouton4.setText("O");
+				}
+		}	else if (e.getSource() == bouton5) {
+				if (tour1 == true) {
+					bouton5.setText("X");
+				} else {
+					bouton5.setText("O");
+				}
+		}	else if (e.getSource() == bouton6) {
+				if (tour1 == true) {
+					bouton6.setText("X");
+				} else {
+					bouton6.setText("O");
+				}
+		}	else if (e.getSource() == bouton7) {
+				if (tour1 == true) {
+					bouton7.setText("X");
+				} else {
+					bouton7.setText("O");
+				}
+		}	else if (e.getSource() == bouton8) {
+			if (tour1 == true) {
+				bouton8.setText("X");
+			} else {
+				bouton8.setText("O");
+			}
+		}
+		
 	}
-	
+
+
+
+
+public static void main(String[] args) {
+	InterfaceGraph f = new InterfaceGraph();
+	f.setVisible(true);
+	}
+
 }
+
