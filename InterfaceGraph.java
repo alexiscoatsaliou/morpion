@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class InterfaceGraph extends JFrame implements ActionListener {
 	
 	boolean tour1 = true;
-	int player = 1;
+	
 	
 	JButton bouton0;
 	JButton bouton1;
@@ -27,10 +27,12 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 	JButton bouton7;
 	JButton bouton8;
 	JButton Rejouer;
+	JLabel AfficheScoreJ1;
+	JLabel AfficheScoreJ2;
 	
 	public InterfaceGraph () {
 		setTitle("Morpion");
-		setSize(350, 350);
+		setSize(400, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Container boxH = Box.createHorizontalBox();		// Création du menu horizontal
@@ -39,12 +41,12 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		boxH.add(Rejouer);
 		Rejouer.setText("Rejouer");
 		Rejouer.addActionListener(this);
-		
-		
 		boxH.add(Box.createHorizontalStrut(45));
-		boxH.add(new JLabel("Score IA"));
+		AfficheScoreJ2 = new JLabel("Score J2: " + GetScoreJ2());
+		boxH.add(AfficheScoreJ2);
 		boxH.add(Box.createHorizontalStrut(30));
-		boxH.add(new JLabel("Score Joueur"));
+		AfficheScoreJ1 = new JLabel("Score J1: " + GetScoreJ1());
+		boxH.add(AfficheScoreJ1);
 		this.add(boxH, BorderLayout.NORTH);
 		
 		Container boxV = Box.createVerticalBox();		// Création du menu vertical
@@ -61,57 +63,38 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		panelTouches.add(bouton0);
 		bouton0.addActionListener(this);
 		bouton0.setFont(bouton0.getFont().deriveFont(24.0f));
-		
 		bouton1 = new JButton();
 		panelTouches.add(bouton1);
 		bouton1.addActionListener(this);
 		bouton1.setFont(bouton1.getFont().deriveFont(24.0f));
-		
 		bouton2 = new JButton();
 		panelTouches.add(bouton2);		
 		bouton2.addActionListener(this);
 		bouton2.setFont(bouton2.getFont().deriveFont(24.0f));
-		
 		bouton3 = new JButton();
 		panelTouches.add(bouton3);
 		bouton3.addActionListener(this);
 		bouton3.setFont(bouton3.getFont().deriveFont(24.0f));
-		
 		bouton4 = new JButton();
 		panelTouches.add(bouton4);
 		bouton4.addActionListener(this);
 		bouton4.setFont(bouton4.getFont().deriveFont(24.0f));
-		
 		bouton5 = new JButton();
 		panelTouches.add(bouton5);
 		bouton5.addActionListener(this);
 		bouton5.setFont(bouton5.getFont().deriveFont(24.0f));
-		
 		bouton6 = new JButton();
 		panelTouches.add(bouton6);
 		bouton6.addActionListener(this);
 		bouton6.setFont(bouton6.getFont().deriveFont(24.0f));
-		
 		bouton7 = new JButton();
 		panelTouches.add(bouton7);
 		bouton7.addActionListener(this);
 		bouton7.setFont(bouton7.getFont().deriveFont(24.0f));
-		
 		bouton8 = new JButton();		
 		panelTouches.add(bouton8);
 		bouton8.addActionListener(this);
 		bouton8.setFont(bouton8.getFont().deriveFont(24.0f));
-		
-		
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
-	//	panelTouches.add(new JButton(""));
 		this.add(panelTouches, BorderLayout.CENTER);
 		
 	}
@@ -198,17 +181,40 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 					bouton8.setText("O");
 					tour1 = !tour1;
 				}
+		}		
+}
+	
+	
+//	public double gagnant() {
+//		if (bouton0 == bouton1 && bouton1 == bouton2) {
+//		}
+//	}
+	
+	
+	
+	public int GetScoreJ1() {
+		int score = 0;
+		if (EstVainqueurJ1() == true) {
+			score ++;
 		}
-		
-		if (e.getSource() == Rejouer) {
-			tour1 = true;
-			bouton0,bouton1,bouton2,bouton3,bouton4,bouton5,bouton6,bouton7,bouton8 = "";
-			
-		}
-		
+		return score;
 	}
-
-
+	public boolean EstVainqueurJ1() {
+		return false;
+	}
+	
+	
+	public int GetScoreJ2() {
+		int score = 0;
+		if (EstVainqueurJ2() == true) {
+			score ++;
+		}
+		return score;
+	}
+	public boolean EstVainqueurJ2() {
+		return false;
+	}
+	
 
 
 public static void main(String[] args) {
@@ -217,4 +223,3 @@ public static void main(String[] args) {
 	}
 
 }
-
