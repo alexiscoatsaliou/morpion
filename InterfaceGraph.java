@@ -15,8 +15,7 @@ import javax.swing.JPanel;
 public class InterfaceGraph extends JFrame implements ActionListener {
 	
 	boolean tour1 = true;
-	
-	
+		
 	JButton bouton0;
 	JButton bouton1;
 	JButton bouton2;
@@ -27,6 +26,8 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 	JButton bouton7;
 	JButton bouton8;
 	JButton Rejouer;
+	JButton vsIA;
+	JButton JcJ;
 	JLabel AfficheScoreJ1;
 	JLabel AfficheScoreJ2;
 	int b0;
@@ -38,6 +39,9 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 	int b6;
 	int b7;
 	int b8;
+	int scoreJ1 = 0;
+	int scoreJ2 = 0;
+	
 	
 	public InterfaceGraph () {
 		setTitle("Morpion");
@@ -46,32 +50,40 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		
 		Container boxH = Box.createHorizontalBox();		// Création du menu horizontal
 		boxH.add(Box.createHorizontalStrut(0));
-		Rejouer = new JButton();
+		Rejouer = new JButton();						// Création du bouton rejouer
 		boxH.add(Rejouer);
 		Rejouer.setText("Rejouer");
 		Rejouer.addActionListener(this);
 		boxH.add(Box.createHorizontalStrut(45));
-		AfficheScoreJ2 = new JLabel("Score J2: " + GetScoreJ2());
+		AfficheScoreJ2 = new JLabel("Score J2: 0");		// Création du tableau de score
 		boxH.add(AfficheScoreJ2);
 		boxH.add(Box.createHorizontalStrut(30));
-		AfficheScoreJ1 = new JLabel("Score J1: " + GetScoreJ1());
+		AfficheScoreJ1 = new JLabel("Score J1: 0");
 		boxH.add(AfficheScoreJ1);
 		this.add(boxH, BorderLayout.NORTH);
 		
 		Container boxV = Box.createVerticalBox();		// Création du menu vertical
 		boxV.add(Box.createVerticalStrut(100));
-		boxV.add(new JButton("VS IA"));
+		
+		vsIA = new JButton();							// Création du bouton versus IA
+		boxV.add(vsIA);
+		vsIA.setText("vsIA");
+		vsIA.addActionListener(this);
 		boxV.add(Box.createVerticalStrut(40));
-		boxV.add(new JButton("JcJ"));
+		JcJ = new JButton();							// Création du bouton joueur contre joueur 
+		boxV.add(JcJ);
+		JcJ.setText("JcJ");
+		JcJ.addActionListener(this);
+		boxV.add(Box.createVerticalStrut(40));
 		this.add(boxV, BorderLayout.WEST);
 		
-		JPanel panelTouches = new JPanel();				// Création de la grille
+		JPanel panelTouches = new JPanel();				// Création de la grille de bouton 
 		panelTouches.setLayout(new GridLayout(3,3));
 		
 		bouton0 = new JButton();
 		panelTouches.add(bouton0);
 		bouton0.addActionListener(this);
-		bouton0.setFont(bouton0.getFont().deriveFont(24.0f));
+		bouton0.setFont(bouton0.getFont().deriveFont(24.0f));		// On augmente la taille du X et du O
 		bouton1 = new JButton();
 		panelTouches.add(bouton1);
 		bouton1.addActionListener(this);
@@ -208,30 +220,47 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 					b8 = 0;
 					tour1 = !tour1;
 				}
-		}		
-	}
-	
-	
-	
-	
-	public int GetScoreJ1() {
-		int score = 0;
-		if (EstVainqueurJ1() == true) {
-			score ++;
 		}
-		return score;
-	}
-	
-	
-	
-	public int GetScoreJ2() {
-		int score = 0;
-		if (EstVainqueurJ2() == true) {
-			score ++;
+		
+		if (e.getSource() == JcJ) {
+			AfficheScoreJ2.setText("Score J2: " +  GetScoreJ2());
+		} 
+		if (e.getSource() == vsIA) {
+			AfficheScoreJ2.setText("Score IA: ");
 		}
-		return score;
-	}
-	
+		
+		if (e.getSource() == Rejouer) {			//reset de toutes les actions
+			
+			tour1 = true;
+			
+			bouton0.setText("");
+			bouton1.setText("");
+			bouton2.setText("");
+			bouton3.setText("");
+			bouton4.setText("");
+			bouton5.setText("");
+			bouton6.setText("");
+			bouton7.setText("");
+			bouton8.setText("");
+			
+			bouton0.setEnabled(true);
+			bouton1.setEnabled(true);
+			bouton2.setEnabled(true);
+			bouton3.setEnabled(true);
+			bouton4.setEnabled(true);
+			bouton5.setEnabled(true);
+			bouton6.setEnabled(true);
+			bouton7.setEnabled(true);
+			bouton8.setEnabled(true);
+			
+//			if (EstVainqueurJ1 == true) {
+//				AfficheScoreJ1.setText("Score J1: " +  GetScoreJ2());
+//			} else if (EstVainqueurJ2 == true ) {
+//				AfficheScoreJ2.setText("Score J2: " +  GetScoreJ1());
+//			}
+		}
+}	
+
 	public boolean EstVainqueurJ1() {
 		if (b0 == 1 && b0 == b1 && b1 == b2 ) {
 			return true;
@@ -290,11 +319,27 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		else {
 			return false;
 		}
-		
 	}
+		
 	
 
-
+		
+	public int GetScoreJ1() {
+		int score = 0;
+		if (EstVainqueurJ1() == true) {
+			score ++;
+		}
+		return score;
+	} 
+		
+	public int GetScoreJ2() {
+		int score = 0;
+		if (EstVainqueurJ2() == true) {
+			score ++;
+		}
+		return score;
+	}
+	
 public static void main(String[] args) {
 	InterfaceGraph f = new InterfaceGraph();
 	f.setVisible(true);
