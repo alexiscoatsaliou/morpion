@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 public class InterfaceGraph extends JFrame implements ActionListener {
 	
 	boolean tour1 = true;
+	int player = 1;
 	
 	JButton bouton0;
 	JButton bouton1;
@@ -25,7 +26,7 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 	JButton bouton6;
 	JButton bouton7;
 	JButton bouton8;
-	JLabel AfficheScore;
+	JButton Rejouer;
 	
 	public InterfaceGraph () {
 		setTitle("Morpion");
@@ -34,11 +35,16 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		
 		Container boxH = Box.createHorizontalBox();		// Création du menu horizontal
 		boxH.add(Box.createHorizontalStrut(0));
-		boxH.add(new JButton("Rejouer"));
+		Rejouer = new JButton();
+		boxH.add(Rejouer);
+		Rejouer.setText("Rejouer");
+		Rejouer.addActionListener(this);
+		
+		
 		boxH.add(Box.createHorizontalStrut(45));
 		boxH.add(new JLabel("Score IA"));
 		boxH.add(Box.createHorizontalStrut(30));
-		boxH.add(AfficheScore);
+		boxH.add(new JLabel("Score Joueur"));
 		this.add(boxH, BorderLayout.NORTH);
 		
 		Container boxV = Box.createVerticalBox();		// Création du menu vertical
@@ -54,117 +60,155 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		bouton0 = new JButton();
 		panelTouches.add(bouton0);
 		bouton0.addActionListener(this);
+		bouton0.setFont(bouton0.getFont().deriveFont(24.0f));
+		
 		bouton1 = new JButton();
 		panelTouches.add(bouton1);
 		bouton1.addActionListener(this);
+		bouton1.setFont(bouton1.getFont().deriveFont(24.0f));
+		
 		bouton2 = new JButton();
 		panelTouches.add(bouton2);		
 		bouton2.addActionListener(this);
+		bouton2.setFont(bouton2.getFont().deriveFont(24.0f));
+		
 		bouton3 = new JButton();
 		panelTouches.add(bouton3);
 		bouton3.addActionListener(this);
+		bouton3.setFont(bouton3.getFont().deriveFont(24.0f));
+		
 		bouton4 = new JButton();
 		panelTouches.add(bouton4);
 		bouton4.addActionListener(this);
+		bouton4.setFont(bouton4.getFont().deriveFont(24.0f));
+		
 		bouton5 = new JButton();
 		panelTouches.add(bouton5);
 		bouton5.addActionListener(this);
+		bouton5.setFont(bouton5.getFont().deriveFont(24.0f));
+		
 		bouton6 = new JButton();
 		panelTouches.add(bouton6);
 		bouton6.addActionListener(this);
+		bouton6.setFont(bouton6.getFont().deriveFont(24.0f));
+		
 		bouton7 = new JButton();
 		panelTouches.add(bouton7);
 		bouton7.addActionListener(this);
+		bouton7.setFont(bouton7.getFont().deriveFont(24.0f));
+		
 		bouton8 = new JButton();		
 		panelTouches.add(bouton8);
 		bouton8.addActionListener(this);
-		this.add(panelTouches, BorderLayout.CENTER);
+		bouton8.setFont(bouton8.getFont().deriveFont(24.0f));
 		
-		AfficheScore = new JLabel("Score joueur" + GetScore());
+		
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+	//	panelTouches.add(new JButton(""));
+		this.add(panelTouches, BorderLayout.CENTER);
 		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == bouton0) {
+		if (e.getSource() == bouton0) { 				//getSource() permet d'obtenir le bouton sur lequel le joeur a cliqué
+				bouton0.setEnabled(false);				//setEnabled permet de rendre les boutons inactifs afin que l'on ne puisse plus 
 				if (tour1 == true) {
 					bouton0.setText("X");
+					tour1 = !tour1;						//permet d'intervertir entre les joueurs (joueur 1(X) joue puis le joueur 2(O) joue) 
 				} else {
 					bouton0.setText("O");
+					tour1 = !tour1;
 				}
 		}	else if (e.getSource() == bouton1) {
+				bouton1.setEnabled(false);
 				if (tour1 == true) {
 					bouton1.setText("X");
+					tour1 = !tour1;
 				} else {
 					bouton1.setText("O");
+					tour1 = !tour1;
 				}
 		}	else if (e.getSource() == bouton2) {
+				bouton2.setEnabled(false);
 				if (tour1 == true) {
 					bouton2.setText("X");
+					tour1 = !tour1;
 				} else {
 					bouton2.setText("O");
+					tour1 = !tour1;
 				}
 		}	else if (e.getSource() == bouton3) {
+				bouton3.setEnabled(false);
 				if (tour1 == true) {
 					bouton3.setText("X");
+					tour1 = !tour1;
 				} else {
 					bouton3.setText("O");
+					tour1 = !tour1;
 				}
 		}	else if (e.getSource() == bouton4) {
+				bouton4.setEnabled(false);
 				if (tour1 == true) {
 					bouton4.setText("X");
+					tour1 = !tour1;
 				} else {
 					bouton4.setText("O");
+					tour1 = !tour1;
 				}
 		}	else if (e.getSource() == bouton5) {
+				bouton5.setEnabled(false);
 				if (tour1 == true) {
 					bouton5.setText("X");
+					tour1 = !tour1;
 				} else {
 					bouton5.setText("O");
+					tour1 = !tour1;
 				}
 		}	else if (e.getSource() == bouton6) {
+				bouton6.setEnabled(false);
 				if (tour1 == true) {
 					bouton6.setText("X");
+					tour1 = !tour1;
 				} else {
 					bouton6.setText("O");
+					tour1 = !tour1;
 				}
 		}	else if (e.getSource() == bouton7) {
+				bouton7.setEnabled(false);
 				if (tour1 == true) {
 					bouton7.setText("X");
+					tour1 = !tour1;
 				} else {
 					bouton7.setText("O");
+					tour1 = !tour1;
 				}
 		}	else if (e.getSource() == bouton8) {
-			if (tour1 == true) {
-				bouton8.setText("X");
-			} else {
-				bouton8.setText("O");
-			}
+				bouton8.setEnabled(false);
+				if (tour1 == true) {
+					bouton8.setText("X");
+					tour1 = !tour1;
+				} else {
+					bouton8.setText("O");
+					tour1 = !tour1;
+				}
+		}
+		
+		if (e.getSource() == Rejouer) {
+			tour1 = true;
+			bouton0,bouton1,bouton2,bouton3,bouton4,bouton5,bouton6,bouton7,bouton8 = "";
+			
 		}
 		
 	}
-	
-	
-//	public double gagnant() {
-//		if (bouton0 == bouton1 && bouton1 == bouton2) {
-//		}
-//	}
-	
-	
-	
-	public double GetScore() {
-		double score = 0;
-		if (EstVainqueur() == true) {
-			score ++;
-		}
-		return score;
-	}
-	
 
-	public boolean EstVainqueur() {
-		return false;
-	
-	}
-	
+
 
 
 public static void main(String[] args) {
@@ -173,3 +217,4 @@ public static void main(String[] args) {
 	}
 
 }
+
