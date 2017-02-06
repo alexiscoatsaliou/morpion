@@ -42,9 +42,11 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 	int b8;
 	int scoreJ1 = 0;
 	int scoreJ2 = 0;
-	boolean J2Humain;
+	boolean J2Humain = true;
 	Random rand = new Random();
-	
+	JButton [] tab = new JButton [8];
+	int boutonAleatoire = 9;
+
 	
 	public InterfaceGraph () {
 		setTitle("Morpion");
@@ -132,14 +134,6 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		this.add(panelTouches, BorderLayout.CENTER);
 		
 	}
-
-	
-	
-//	public double gagnant() {
-//		if (bouton0 == bouton1 && bouton1 == bouton2) {
-//		}
-//	}
-			
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == bouton0) { 				//getSource() permet d'obtenir le bouton sur lequel le joeur a cliqué
@@ -244,19 +238,30 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		}
 		
 		if (e.getSource() == JcJ) {
-			AfficheScoreJ2.setText("Score J2: ");
+			AfficheScoreJ2.setText("Score J2: 0");
 			J2Humain =true;
+			scoreJ1 = 0;
+			scoreJ2 = 0;
+			AfficheScoreJ1.setText("Score J1: 0");
 		} 
 		if (e.getSource() == vsIA) {
 			J2Humain = false;
-			AfficheScoreJ2.setText("Score IA: ");
-			if (tour1 == false) {
-				int boutonAleatoire = rand.nextInt(9 - 0 + 1) + 0;
-				String boutonChoisi = "bouton" + boutonAleatoire;
-				
-					
-			}
+			scoreJ1 = 0;
+			scoreJ2 = 0;
+			AfficheScoreJ1.setText("Score J1: 0");
+			AfficheScoreJ2.setText("Score IA: 0");
+			tab[0] = bouton0;
+			tab[1] = bouton1;
+			tab[2] = bouton2;
+			tab[3] = bouton3;
+			tab[4] = bouton4;
+			tab[5] = bouton5;
+			tab[6] = bouton6;
+			tab[7] = bouton7;
+			tab[8] = bouton8;
+			
 		}
+		
 			
 		
 		if (e.getSource() == Rejouer) {			//reset de toutes les actions
@@ -283,17 +288,6 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 			bouton7.setEnabled(true);
 			bouton8.setEnabled(true);
 			
-
-			if (EstVainqueurJ1() == true) {
-				AfficheScoreJ1.setText("Score J1: " +  GetScoreJ1());
-			} 
-			if (J2Humain == true && EstVainqueurJ2() == true ) {
-				AfficheScoreJ2.setText("Score J2: " +  GetScoreJ2());
-			} 
-			if (J2Humain == false && EstVainqueurJ2() == true) {
-				
-			}
-			
 			b0 = 2;
 			b1 = 2;
 			b2 = 2;
@@ -304,11 +298,28 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 			b7 = 2;
 			b8 = 2;
 			
+
+			if (EstVainqueurJ1() == true) {
+				AfficheScoreJ1.setText("Score J1: " +  GetScoreJ1());
+			} 
+			if (J2Humain == true && EstVainqueurJ2() == true ) {
+				AfficheScoreJ2.setText("Score J2: " +  GetScoreJ2());
+			} 
+			if (J2Humain == false && EstVainqueurJ2() == true) {
+				AfficheScoreJ2.setText("Score IA: " +  GetScoreJ2());
+			}
 		}
 	}	
 		
 
-
+	public void Facile() {
+		if (tour1 == false) {
+			boutonAleatoire = rand.nextInt(9 - 0 + 1) + 0;
+			tab[boutonAleatoire].doClick();;
+		}
+	} 
+	
+	
 	public boolean EstVainqueurJ1() {
 		if (b0 == 1 && b0 == b1 && b1 == b2 ) {
 			return true;
@@ -340,7 +351,7 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 	}	
 		
 		
-		public int GetScoreJ2() {
+	public int GetScoreJ2() {
 			if (EstVainqueurJ2() == true) {
 				scoreJ2 ++;
 			 }
@@ -348,8 +359,7 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 		}
 		
 		
-		
-		public boolean EstVainqueurJ2() {
+	public boolean EstVainqueurJ2() {
 			if (b0 == 0 && b0 == b1 && b1 == b2 ) {
 			 return true;
 			} 
@@ -379,7 +389,7 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 			}
 		}
 			
-		public int GetScoreJ1() {
+	public int GetScoreJ1() {
 			if (EstVainqueurJ1() == true) {
 				scoreJ1 ++;
 				
@@ -387,6 +397,7 @@ public class InterfaceGraph extends JFrame implements ActionListener {
 			return scoreJ1;
 		}
 					
+	
 
 
 public static void main(String[] args) {
