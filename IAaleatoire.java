@@ -138,10 +138,10 @@ public class IAaleatoire extends JFrame implements ActionListener {
 	public void Cliquebouton(){
 	
 		if (tour1 == false) {
-			int boutonAleatoire = rand.nextInt(9 - 0 + 1) + 0;
-			while (tabtest[boutonAleatoire] != 2 ){
-			tabtest[boutonAleatoire] = 2;
-			tabBouton[boutonAleatoire].setText("O");
+			int boutonAleatoire = rand.nextInt(9 - 0 + 1) + 0; //tirer au hasard un nombre entre 0 et 9
+			while (tabtest[boutonAleatoire] != 2 ){ 		  //test si la case qui correspond au numero tiré a deja cliqué
+			tabtest[boutonAleatoire] = 2;					// on attribut le numero 2 aux numéros tirés
+			tabBouton[boutonAleatoire].setText("O");  		// fait le clique sur le bouton
 			}
 		}										
 				
@@ -250,6 +250,7 @@ public class IAaleatoire extends JFrame implements ActionListener {
 			tabBouton[6]= bouton6;
 			tabBouton[7]= bouton7;
 			tabBouton[8]= bouton8;
+			
 		}
 	
 			
